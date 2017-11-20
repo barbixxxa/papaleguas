@@ -1,0 +1,25 @@
+//OK
+package com.acme.testes.cliente;
+
+import com.acme.rn.cliente.Cpf;
+
+public class TesteCpf {
+
+	public static void main(String[] args) {
+		Cpf cpf = new Cpf("11144477735"); // Inicializacao e declaracao dos
+											// atributos
+
+		cpf.setCpf("1");// Metodo para alterar o cpf
+		System.out.println(cpf.getCpf()); // Metodo para receber o cpf
+		System.out.println(cpf.calcularDigitoVerificador("11144477735"));// Metodo
+																			// para
+																			// verificar
+																			// se
+																			// o
+																			// cpf
+																			// e
+																			// valido
+
+	}
+
+}

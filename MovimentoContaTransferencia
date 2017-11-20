@@ -1,0 +1,27 @@
+package com.acme.rn.conta;
+
+import java.util.Date;
+
+public class MovimentoContaTransferencia extends MovimentoConta {
+	private ContaMilhagem contaDestino;
+
+	public MovimentoContaTransferencia(ContaMilhagem contaOrigem, double valor, ContaMilhagem contaDestino,
+			String nomeFonte, Date data) {
+		super(contaOrigem, valor, nomeFonte, data);
+		setContaDestino(contaDestino);
+
+	}
+
+	public void setContaDestino(ContaMilhagem contaDestino) {
+		if (contaDestino != null) {
+			this.contaDestino = contaDestino;
+		} else {
+			System.out.println("Conta Destino nula.");
+		}
+	}
+
+	public ContaMilhagem getContaDestino() {
+		return this.contaDestino;
+	}
+
+}

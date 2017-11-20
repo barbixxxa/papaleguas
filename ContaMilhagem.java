@@ -1,12 +1,13 @@
 package com.acme.rn.conta;
 
+import com.acme.rn.classesGerais.Identificavel;
 import com.acme.rn.cliente.Cliente;
 
-public class ContaMilhagem {
+public class ContaMilhagem extends Identificavel {
 
 	private IdentificadorConta identificador; // Declaracao dos atributos
 	private Cliente cliente;
-	private int saldo;
+	private double saldo;
 	private boolean ativo = false;
 
 	public IdentificadorConta getIdentificadorConta() { // Metodo para retornar
@@ -19,7 +20,7 @@ public class ContaMilhagem {
 		return ativo;
 	}
 
-	public int getSaldo() { // Metodo para retornar o saldo
+	public double getSaldo() { // Metodo para retornar o saldo
 		return saldo;
 	}
 
@@ -27,40 +28,49 @@ public class ContaMilhagem {
 		return cliente;
 	}
 
-	public void setSaldo(int valor) {// Metodo para atribuir saldo
-		this.saldo = valor;
+	public void setSaldo(double valor) {// Metodo para atribuir saldo
+		if (valor >= 0) {
+			this.saldo = valor;
+		}
 	}
 
 	public void setCliente(Cliente cliente) {// Metodo para atribuir cliente
-		this.cliente = cliente;
+		if (cliente != null) {
+			this.cliente = cliente;
+		}
 	}
 
 	public void setIdentificadorConta(IdentificadorConta id) {// Metodo para
 																// atribuir
 																// identificador
 																// conta
-		this.identificador = id;
+		if (id != null) {
+			this.identificador = id;
+		}
 	}
 
-	public void creditar(int valor) { // Metodo para creditar um valor
+	public void creditar(double valor) { // Metodo para creditar um valor
 		if (valor > 0) // Verifica se o valor e positivo
 			this.saldo += valor;// Se for maior entao credita
 	}
 
-	public void debitar(int valor) { // Metodo para debitar um valor
-		if (this.saldo > valor && valor > 0) // Verifica se o saldo permite o
+	public boolean debitar(double valor) { // Metodo para debitar um valor
+		if (this.saldo > valor && valor > 0) { // Verifica se o saldo permite o
 												// debito
 			this.saldo -= valor;// Se permitir entao debita
+			return true;
+		}
+		return false;
 	}
 
-	public void transferir(int valor, ContaMilhagem conta) { // Metodo para
+	public void transferir(double valor, ContaMilhagem conta) { // Metodo para
 																// transferir um
 																// valor de uma
 																// para outra
 																// conta
 		if (conta.ativo == true) { // Verifica o status da conta
-			this.debitar(valor); // Debita o valor da conta de origem
-			conta.creditar(valor); // Credita o valor a conta de destino
+			if (this.debitar(valor)) // Debita o valor da conta de origem
+				conta.creditar(valor); // Credita o valor a conta de destino
 		} else {// Se nao estivr ativa
 			System.out.println("Conta desativada, nao e possivel transferir.");// Imprimir
 																				// mensagem
@@ -84,10 +94,14 @@ public class ContaMilhagem {
 																	// inicializar
 																	// os
 																	// atributos
-		setIdentificadorConta(id); // Atribui os valor recebidos aos atributos
-		setCliente(cliente);
-		setSaldo(0);// Inicializa a conta com saldo 0
-		reativar();// Inicializa a conta como ativa
+		this.setIdentificadorConta(id); // Atribui os valor recebidos aos atributos
+		this.setCliente(cliente);
+		this.setSaldo(0);// Inicializa a conta com saldo 0
+		this.reativar();// Inicializa a conta como ativa
+	}
+
+	public String getChave() {
+		return "" + identificador.getIdentificadorConta();
 	}
 
 	public String toString() { // Metodo que altera o tipo original para o tipo

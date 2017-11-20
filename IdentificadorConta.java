@@ -13,7 +13,9 @@ public class IdentificadorConta {
 
 	public void setIdentificadorConta(long numero) { // Metodo para atribuir
 														// valor ao atributo
-		this.numero = numero; // Atribui ao atributo o valor long recebido
+		if(numero != 0){
+			this.numero = numero; // Atribui ao atributo o valor long recebido
+		}
 	}
 
 	public long getIdentificadorConta() { // Metodo para receber o valor do

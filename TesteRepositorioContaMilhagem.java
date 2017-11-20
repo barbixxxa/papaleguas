@@ -1,5 +1,5 @@
-package com.acme.testes.conta;
 //OK
+package com.acme.testes.conta;
 
 import com.acme.ado.conta.RepositorioContaMilhagem;
 import com.acme.rn.cliente.Cliente;
@@ -36,33 +36,35 @@ public class TesteRepositorioContaMilhagem {
 																		// RepositorioContaMilhagem
 		rcm.incluir(cm); // Inclui ao repositorio a contamilhagem
 
-		System.out.println("Cliente: \n" + rcm.buscar(cm.getCliente().getCpf(), id)); // Imprimi
-																						// o
-																						// resultado
-																						// da
-																						// busca
-																						// no
-																						// repositorio
+		System.out.println("Cliente: \n" + rcm.buscar(id)); // Imprimi
+															// o
+															// resultado
+															// da
+															// busca
+															// no
+															// repositorio
 
-		rcm.excluir(cpf, id); // Exclui do repositorio a conta com o cpf e
-								// identificadorconta recebidos
+		rcm.excluir(id); // Exclui do repositorio a conta com o cpf e
+							// identificadorconta recebidos
 
-		System.out.println("Cliente: \n" + rcm.buscar(cm.getCliente().getCpf(), id)); // Imprimi
-																						// o
-																						// resultado
-																						// da
-																						// busca
-																						// no
-																						// repositorio
+		rcm.buscarTodos(); // Imprimi
+							// o
+							// resultado
+							// da
+							// busca
+							// no
+							// repositorio
 
 		rcm.incluir(cm); // Inclui ao repositorio a contaMilhagem
+		rcm.incluir(cm); // Tenta incluir novamente a contaMilhagem ao
+							// repositorio
 		id.setIdentificadorConta(9999); // Altera o indetificadorConta
 		ContaMilhagem cmNovo = new ContaMilhagem(id, c); // Inicializa o
 															// atributo do tipo
 															// ContaMilhagem com
 															// os atributos
 															// recebidos
-		rcm.alterar(cm, cmNovo); // Altera a contaMilhagem
+		rcm.alterar(id, cmNovo); // Altera a contaMilhagem
 		rcm.buscarTodos(); // Busca e lista todas as informaçoes presente no
 							// array
 	}

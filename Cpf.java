@@ -83,6 +83,6 @@ public class Cpf {
 
 	public Cpf(String cpf) { // Construtor que atribui o valor recebido ao
 								// atributo cpf
-		setCpf(cpf);
+		this.setCpf(cpf);
 	}
 }

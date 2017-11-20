@@ -1,0 +1,11 @@
+package com.acme.rn.conta;
+
+import java.util.Date;
+
+public class MovimentoContaCredito extends MovimentoConta {
+
+	public MovimentoContaCredito(ContaMilhagem contaOrigem, double valor, String nomeFonte, Date data) {
+		super(contaOrigem, valor, nomeFonte, data);
+	}
+
+}

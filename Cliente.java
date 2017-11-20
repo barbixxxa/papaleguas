@@ -1,23 +1,25 @@
 package com.acme.rn.cliente;
 
-public class Cliente {
+import com.acme.rn.classesGerais.Identificavel;
+
+public class Cliente extends Identificavel {
 	private String nome; // Declaracao dos atributos
 	private Cpf cpf;
 	private float renda;
 	private int idade;
 	private int sexo;
-	private final int masculino = 1, feminino = 2;
+	private static final int masculino = 1, feminino = 2;
 
 	public Cliente(Cpf cpf, String nome, float renda, int idade, int sexo) { // Construtor
 																				// para
 																				// inicializar
 																				// os
 																				// atributos
-		setCpf(cpf); // Atribui ao atributo o valor recebido
-		setIdade(idade);
-		setNome(nome);
-		setRenda(renda);
-		setSexo(sexo);
+		this.setCpf(cpf); // Atribui ao atributo o valor recebido
+		this.setIdade(idade);
+		this.setNome(nome);
+		this.setRenda(renda);
+		this.setSexo(sexo);
 	}
 
 	public String getNome() { // Metodo para receber o valor do atributo
@@ -65,24 +67,37 @@ public class Cliente {
 	}
 
 	public void setCpf(Cpf cpf) {// Metodo para atribuir cpf
-		this.cpf = cpf;
+		if (cpf != null) {
+			this.cpf = cpf;
+		}
 	}
 
 	public void setNome(String nome) { // Metodo para atribuir valor ao atributo
-		this.nome = nome;
+		if (nome != null) {
+			this.nome = nome;
+		}
 	}
 
 	public void setRenda(float renda) { // Metodo para atribuir valor ao
-										// atributo
-		this.renda = renda;
+		if (renda > 0) {
+			this.renda = renda;
+		}
 	}
 
 	public void setIdade(int idade) { // Metodo para atribuir valor ao atributo
-		this.idade = idade;
+		if (idade > 0) {
+			this.idade = idade;
+		}
 	}
 
 	public void setSexo(int sexo) { // Metodo para atribuir valor ao atributo
-		this.sexo = sexo;
+		if (sexo == masculino || sexo == feminino) {
+			this.sexo = sexo;
+		}
+	}
+
+	public String getChave() {
+		return cpf.getCpf();
 	}
 
 	public String toString() { // Metodo que altera o tipo original para o tipo

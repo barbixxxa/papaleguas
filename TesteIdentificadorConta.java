@@ -1,7 +1,7 @@
-package com.acme.testes.conta;
 //OK
-import java.util.Scanner;
+package com.acme.testes.conta;
 
+import java.util.Scanner;
 import com.acme.rn.conta.IdentificadorConta;
 
 public class TesteIdentificadorConta {

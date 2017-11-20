@@ -1,5 +1,6 @@
-package com.acme.testes.conta;
 //OK
+package com.acme.testes.conta;
+
 import com.acme.rn.cliente.Cliente;
 import com.acme.rn.cliente.Cpf;
 import com.acme.rn.conta.ContaMilhagem;
@@ -77,6 +78,10 @@ public class TesteContaMilhagem {
 																															// das
 																															// contas
 		"\n\nSaldo: " + cmDois.getSaldo() + "\nCliente: " + cmDois.getCliente() + "Status: " + cmDois.getStatus());
+
+		System.out.println("\nChave:" + cm.getChave()); // Retorna o valor da
+														// chave da conta
+		// milhagem
 
 	}
 

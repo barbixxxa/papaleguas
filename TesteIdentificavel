@@ -1,0 +1,15 @@
+//OK
+package com.acme.testes.classesGerais;
+
+import com.acme.rn.classesGerais.Identificavel;
+
+public class TesteIdentificavel {
+
+	public static void main(String[] args) {
+		Identificavel id = new Identificavel(); // Declaracao e inicializacao do
+												// atributo Identificavel
+		System.out.println(id.getChave()); // Imprimir o metodo getChave
+
+	}
+
+}

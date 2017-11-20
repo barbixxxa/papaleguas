@@ -1,10 +1,7 @@
-package com.acme.testes.conta;
 //OK
+package com.acme.testes.conta;
 
 import java.util.Date;
-//OK
-//OK
-
 import com.acme.ado.conta.RepositorioMovimentoConta;
 import com.acme.rn.cliente.Cliente;
 import com.acme.rn.cliente.Cpf;
@@ -16,7 +13,6 @@ public class TesteRepositorioMovimentoConta {
 
 	public static void main(String[] args) {
 		int valor = 450; // Inicializa o atributo do tipo inteiro
-		int tipo = 3; // Inicializa o atributo do tipo inteiro
 		String cpff = "04623671186"; // Inicializa o atributo do tipo cadeia de
 										// caracteres
 		String nomeFonte = "Teste"; // Inicializa o atributo do tipo cadeia de
@@ -40,34 +36,19 @@ public class TesteRepositorioMovimentoConta {
 															// identificadorconta
 															// e o cliente
 															// recebido
-		IdentificadorConta idDois = new IdentificadorConta(666); // Inicializa
-																	// um novo
-																	// atributo
-																	// do tipo
-																	// IdentificadorConta
-																	// com o
-																	// inteiro
-																	// recebido
-		ContaMilhagem contaD = new ContaMilhagem(idDois, c); // Inicializa um
-																// novo atributo
-																// do tipo
-																// ContaMilhagem
-																// com o
-																// identificadorconta
-																// e o cliente
-																// recebido
+
 		Date data = new Date(); // Inicializa um novo atributo do tipo Data
-		MovimentoConta mc = new MovimentoConta(contaO, valor, tipo, contaD, nomeFonte, data); // Inicializa
-																								// um
-																								// novo
-																								// atributo
-																								// do
-																								// tipo
-																								// MovimentoConta
-																								// com
-																								// os
-																								// atributos
-																								// recebidos
+		MovimentoConta mc = new MovimentoConta(contaO, valor, nomeFonte, data); // Inicializa
+																				// um
+																				// novo
+																				// atributo
+																				// do
+																				// tipo
+																				// MovimentoConta
+																				// com
+																				// os
+																				// atributos
+																				// recebidos
 		RepositorioMovimentoConta rmc = new RepositorioMovimentoConta(); // Inicializa
 																			// um
 																			// novo
@@ -77,14 +58,14 @@ public class TesteRepositorioMovimentoConta {
 																			// RepositorioMovimentoConta
 
 		rmc.incluir(mc); // Inclui ao repositorio o movimentoConta
-		System.out.println("Movimento existe: \n" + rmc.buscar(contaO, data)); // Imprimi
-																		// se o
-																		// movimento
-																		// ja
-																		// foi
-																		// adicionado
-																		// ao
-																		// repositorio
+		System.out.println("Movimento existe: \n" + rmc.buscar(mc.getChave())); // Imprimi
+		// se o
+		// movimento
+		// ja
+		// foi
+		// adicionado
+		// ao
+		// repositorio
 		rmc.incluir(mc); // Inclui ao repositorio o movimentoConta
 		rmc.buscarTodos(); // Imprimi as informacoes de tudo existente no array
 	}

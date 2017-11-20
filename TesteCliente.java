@@ -1,3 +1,4 @@
+//OK
 package com.acme.testes.cliente;
 
 import com.acme.rn.cliente.Cliente;
@@ -34,6 +35,8 @@ public class TesteCliente {
 															// metodos get
 		"\nPrimeiro nome: " + c.getPrimeiroNome() + "\nUltimo Nome: " + c.getUltimoNome() + "\nSalario: " + c.getRenda()
 				+ "\nIdade: " + c.getIdade() + "\nSexo: " + c.getSexo());
+
+		System.out.println(c.getChave()); // Retorna a chave do cliente
 
 	}
 

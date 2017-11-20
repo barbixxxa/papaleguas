@@ -7,12 +7,11 @@ import com.acme.rn.cliente.Cliente;
 import com.acme.rn.cliente.Cpf;
 import com.acme.rn.conta.ContaMilhagem;
 import com.acme.rn.conta.IdentificadorConta;
-import com.acme.rn.conta.MovimentoConta;
+import com.acme.rn.conta.MovimentoContaTransferencia;
 
-public class TesteMovimentoConta {
+public class TesteMovimentoContaTransferencia {
 
 	public static void main(String[] args) {
-
 		int valor; // Declaracao de atributos do tipo inteiro
 		String nomeFonte; // Declaracao do atributo do tipo cadeia de caracteres
 		Date data = new Date(); // Inicializacao do atributo do tipo data
@@ -32,6 +31,9 @@ public class TesteMovimentoConta {
 		ContaMilhagem cmO = new ContaMilhagem(idc, c); // Inicializacao do
 														// atributo do tipo
 														// ContaMilhagem
+		ContaMilhagem cmD = new ContaMilhagem(idc, c); // Inicializacao do
+														// atributo do tipo
+														// ContaMilhagem
 
 		Scanner sc = new Scanner(System.in); // Inicializacao do scanner
 
@@ -42,23 +44,27 @@ public class TesteMovimentoConta {
 		nomeFonte = sc.next(); // Atribui ao atributo a proxima cadeia de
 								// caracteres digitada
 
-		MovimentoConta mc = new MovimentoConta(cmO, valor, nomeFonte, data); // Inicializacao
-																				// do
-																				// atributo
-																				// do
-																				// tipo
-																				// MovimentoConta
-		System.out.println(mc.toString() + "\n" + mc.getNomeExtrato()); // Imprimi
-																		// na
-																		// tela
-																		// as
-																		// informacoes
-																		// do
-																		// movimentoConta
+		MovimentoContaTransferencia mct = new MovimentoContaTransferencia(cmO, valor, cmD, nomeFonte, data); // Inicializacao
+		// do
+		// atributo
+		// do
+		// tipo
+		// MovimentoConta
+
+		mct.setContaDestino(cmD); // Metodo para atribuir conta Destino
+		mct.getContaDestino(); // Metodo para receber conta destino
+		System.out.println(mct.toString() + "\n" + mct.getNomeExtrato()); // Imprimi
+																			// na
+																			// tela
+																			// as
+																			// informacoes
+																			// do
+																			// movimentoConta
 		sc.close(); // Fecha o scanner
 
-		System.out.println("\nChave:" + mc.getChave()); // Retorna o valor da chave do
-											// movimento conta
+		System.out.println("\nChave:" + mct.getChave()); // Retorna o valor da
+															// chave do
+		// movimento conta
 	}
 
 }

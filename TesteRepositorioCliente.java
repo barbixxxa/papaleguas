@@ -1,5 +1,6 @@
-package com.acme.testes.cliente;
 //OK
+package com.acme.testes.cliente;
+
 import com.acme.ado.cliente.RepositorioCliente;
 import com.acme.rn.cliente.Cliente;
 import com.acme.rn.cliente.Cpf;
@@ -34,6 +35,7 @@ public class TesteRepositorioCliente {
 															// repositoriocliente
 
 		rc.incluir(c); // Inclui o cliente c
+		rc.incluir(c); // Tenta incluir o cliente novamente ao repositorio
 
 		System.out.println(rc.buscar(cpfUm)); // Procura pelo cliente c e
 												// imprimi o que foi encontrado

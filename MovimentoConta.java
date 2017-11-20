@@ -2,72 +2,61 @@ package com.acme.rn.conta;
 
 import java.util.Date;
 
-public class MovimentoConta {
+import com.acme.rn.classesGerais.Identificavel;
+
+public class MovimentoConta extends Identificavel {
 
 	private ContaMilhagem contaOrigem; // Declaracao dos atributos
-	private ContaMilhagem contaDestino;
-	private int valor;
-	private int tipo;
+
+	private double valor;
 	private String nomeFonte;
 	private Date data;
-	private final int credito = 1, debito = 2, transferencia = 3;
 
-	public MovimentoConta(ContaMilhagem contaOrigem, int valor, int tipo, ContaMilhagem contaDestino, String nomeFonte,
-			Date data) {// Construtor
-						// para
-						// inicializar
-						// os
-						// atributos
-		setcontaDestino(contaDestino);
-		setcontaOrigem(contaOrigem);
-		setValor(valor);
-		setNomeFonte(nomeFonte);
-		setTipo(tipo);
-		setData(data);
+	public MovimentoConta(ContaMilhagem contaOrigem, double valor, String nomeFonte, Date data) {// Construtor
+																									// para
+																									// inicializar
+																									// os
+																									// atributos
+
+		this.setcontaOrigem(contaOrigem);
+		this.setValor(valor);
+		this.setNomeFonte(nomeFonte);
+		this.setData(data);
 	}
 
 	public void setData(Date data) {// Metodo para atribuir a data
-		this.data = data;
+		if (data != null) {
+			this.data = data;
+		}
 	}
 
-	public void setValor(int valor) {// Metodo para atribuir o valor da
+	public void setValor(double valor) {// Metodo para atribuir o valor da
 										// transacao
-		this.valor = valor;
-	}
-
-	public void setTipo(int tipo) {// Metodo para atribuir o tipo de transacao
-		this.tipo = tipo;
+		if (valor >= 0) {
+			this.valor = valor;
+		}
 	}
 
 	public void setNomeFonte(String nomeFonte) {// Metodo para atribuir o nome
 												// da fonte
-		this.nomeFonte = nomeFonte;
+		if (nomeFonte != null) {
+			this.nomeFonte = nomeFonte;
+		}
 	}
 
 	public void setcontaOrigem(ContaMilhagem cm) {// Metodo para atribuir uma
 													// conta
-		this.contaOrigem = cm;
-	}
-
-	public void setcontaDestino(ContaMilhagem cm) {// Metodo para atribuir uma
-													// conta
-		this.contaDestino = cm;
+		if (cm != null) {
+			this.contaOrigem = cm;
+		}
 	}
 
 	public ContaMilhagem getcontaOrigem() { // Metodo para receber a conta
 		return contaOrigem;
 	}
 
-	public ContaMilhagem getcontaDestino() { // Metodo para receber a conta
-		return contaDestino;
-	}
-
-	public int getValor() { // Metodo para receber o valor
+	public double getValor() { // Metodo para receber o valor
 		return valor;
-	}
-
-	public int getTipo() { // Metodo para receber o tipo
-		return tipo;
 	}
 
 	public String getNomeFonte() { // Metodo para receber o nome da fonte
@@ -110,11 +99,15 @@ public class MovimentoConta {
 		", " + contaOrigem.getCliente().getPrimeiroNome().toUpperCase() + s;
 	}
 
+	public String getChave() {
+		return "" + contaOrigem.getIdentificadorConta().getIdentificadorConta() + data.getDate() + data.getMonth()
+				+ data.getYear() + data.getHours() + data.getMinutes();
+	}
+
 	public String toString() { // Metodo que altera o tipo original para o tipo
 								// cadeia de caracteres
-		return this.getcontaOrigem().toString() + "Valor: " + this.getValor() + "\nTipo: " + this.getTipo()
-				+ "\nConta de Destino: \n" + this.getcontaDestino() + "Nome da Fonte: " + this.getNomeFonte()
-				+ "\nData: " + this.getData() + "\n";
+		return this.getcontaOrigem().toString() + "Valor: " + this.getValor() + "\nConta de Destino: \n"
+				+ "Nome da Fonte: " + this.getNomeFonte() + "\nData: " + this.getData() + "\n";
 	}
 
 	public boolean equals(Object o) {// Metodo para comparar dois objetos
