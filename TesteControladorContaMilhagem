@@ -1,0 +1,50 @@
+package com.acme.testes.conta;
+//OK
+
+import com.acme.rn.cliente.Cliente;
+import com.acme.rn.cliente.ControladorCliente;
+import com.acme.rn.cliente.Cpf;
+import com.acme.rn.conta.ControladorContaMilhagem;
+import com.acme.rn.conta.IdentificadorConta;
+
+public class TesteControladorContaMilhagem {
+	public static void main(String[] args) {
+		String cpf = "11144477735"; // Declaracao da cadeia de caracteres
+		Cpf cpff = new Cpf(cpf); // Cria um novo atributo do tipo cpf
+		ControladorContaMilhagem ccm = new ControladorContaMilhagem();// Inicializa
+																		// um
+																		// novo
+																		// controlador
+																		// conta
+																		// milhagem
+
+		IdentificadorConta id = new IdentificadorConta(Long.parseLong(cpf));// Inicializa
+																			// um
+																			// novo
+																			// identificador
+																			// conta
+																			// com
+																			// o
+																			// cpf
+																			// como
+																			// id
+
+		Cliente cliente = new Cliente(cpff, "Eu", 9999, 9, 1);// Inicializa um
+																// novo cliente
+		ControladorCliente cc = new ControladorCliente();// Inicializa um novo
+															// controlador
+															// cliente
+
+		cc.incluir(cliente);// Inclui o cliente ao repositorio pelo controlador
+							// cliente
+
+		ccm.inserir(cpff);// Inseri o cpf a uma conta ao repositorio pelo
+							// controlador conta milhagem
+		ccm.creditar(id, 33310);// Credita pelo controlador conta milhagem
+		System.out.println(ccm.buscar(id, 10));// Imprimi a conta encontrada
+		ccm.debitar(id, 33300);// Debita pelo controlador conta milhagem
+		ccm.transferir(id, id, 1);// Transfere pelo controlador conta milhagem
+		ccm.BuscarTodos();// Busca todas as contas existentes
+
+	}
+}

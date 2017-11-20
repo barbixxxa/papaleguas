@@ -1,0 +1,35 @@
+package com.acme.testes.cliente;
+
+//OK
+import com.acme.rn.cliente.Cliente;
+import com.acme.rn.cliente.ControladorCliente;
+import com.acme.rn.cliente.Cpf;
+
+public class TesteControladorCliente {
+
+	public static void main(String[] args) {
+		String cpf = "11144477735"; // Declaracao da cadeia de
+									// caracteres
+		Cpf cpff = new Cpf(cpf); // Cria um novo atributo do tipo cpf
+		Cliente cliente = new Cliente(cpff, "Eu", 9999, 9, 1);// Inicializa um
+																// novo cliente
+		ControladorCliente cc = new ControladorCliente();// Inicializa um novo
+															// controlador
+															// cliente
+
+		cc.incluir(cliente);// Inclui um novo cliente ao repositorio pelo
+							// controlador cliente
+		System.out.println(cc.buscar(cliente.getCpf()));// Imprimi oque foi
+														// encontrado pelo
+														// controlador cliente
+		cc.alterar(cliente);// Altera o cliente do repositorio pelo controlador
+							// clinte
+		cc.buscarTodos();// Busca todos os clientes existentes no repositorio
+		cc.excluir(cliente.getCpf());// Exclui o cliente do repositorio pelo
+										// controlador cliente
+		System.out.println(cc.buscar(cliente.getCpf()));// Imprimi oque foi
+														// encontrado pelo
+														// controlador cliente
+	}
+
+}
