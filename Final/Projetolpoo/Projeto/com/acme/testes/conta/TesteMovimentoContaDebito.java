@@ -1,0 +1,70 @@
+//OK 19/11 09:50
+package com.acme.testes.conta;
+
+import java.util.Date;
+import java.util.Scanner;
+
+import com.acme.excecoes.ExcecaoValorInvalido;
+import com.acme.rn.cliente.Cliente;
+import com.acme.rn.cliente.Cpf;
+import com.acme.rn.conta.ContaMilhagem;
+import com.acme.rn.conta.IdentificadorConta;
+import com.acme.rn.conta.MovimentoContaDebito;
+
+public class TesteMovimentoContaDebito {
+
+	public static void main(String[] args) throws Exception {
+		int valor; // Declaracao de atributos do tipo inteiro
+		String nomeFonte; // Declaracao do atributo do tipo cadeia de caracteres
+		Date data = new Date(); // Inicializacao do atributo do tipo data
+		Cpf cpf = new Cpf("11144477735"); // Inicializacao do atributo do tipo
+											// cpf
+		Cliente c = new Cliente(cpf, "Son \"Kakaroto\" Goku", 96969, 25, 1); // Inicializacao
+																				// do
+																				// atributo
+																				// do
+																				// tipo
+																				// cliente
+		IdentificadorConta idc = new IdentificadorConta(99); // Inicializacao do
+																// atributo do
+																// tipo
+																// identificadorConta
+
+		ContaMilhagem cmO = new ContaMilhagem(idc, c); // Inicializacao do
+														// atributo do tipo
+														// ContaMilhagem
+
+		Scanner sc = new Scanner(System.in); // Inicializacao do scanner
+
+		System.out.println("Insira o valor: "); // Imprimi mensagem na tela
+		valor = sc.nextInt(); // Atribui ao atributo o proximo inteiro digitado
+		System.out.println("Insira o nome da fonte: "); // Imprimi mensagem na
+														// tela
+		nomeFonte = sc.next(); // Atribui ao atributo a proxima cadeia de
+								// caracteres digitada
+		cmO.creditar(valor + 666); //Credita um valor a conta
+		cmO.debitar(valor); //Debita o valor da conta
+
+		MovimentoContaDebito mcd = new MovimentoContaDebito(cmO, cmO, valor, nomeFonte, data); // Inicializacao
+		// do
+		// atributo
+		// do
+		// tipo
+		// MovimentoConta
+
+		System.out.println(mcd.toString() + "\n" + mcd.getNomeExtrato()); // Imprimi
+																			// na
+																			// tela
+																			// as
+																			// informacoes
+																			// do
+																			// movimentoConta
+		sc.close(); // Fecha o scanner
+
+		System.out.println("\nChave:" + mcd.getChave()); // Retorna o valor da
+															// chave do
+		// movimento conta
+
+	}
+
+}
