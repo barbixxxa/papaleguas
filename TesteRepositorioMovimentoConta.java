@@ -1,17 +1,18 @@
-//OK
 package com.acme.testes.conta;
 
 import java.util.Date;
 import com.acme.ado.conta.RepositorioMovimentoConta;
+
 import com.acme.rn.cliente.Cliente;
 import com.acme.rn.cliente.Cpf;
 import com.acme.rn.conta.ContaMilhagem;
 import com.acme.rn.conta.IdentificadorConta;
-import com.acme.rn.conta.MovimentoConta;
+
+import com.acme.rn.conta.MovimentoContaCredito;
 
 public class TesteRepositorioMovimentoConta {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		int valor = 450; // Inicializa o atributo do tipo inteiro
 		String cpff = "04623671186"; // Inicializa o atributo do tipo cadeia de
 										// caracteres
@@ -38,17 +39,17 @@ public class TesteRepositorioMovimentoConta {
 															// recebido
 
 		Date data = new Date(); // Inicializa um novo atributo do tipo Data
-		MovimentoConta mc = new MovimentoConta(contaO, valor, nomeFonte, data); // Inicializa
-																				// um
-																				// novo
-																				// atributo
-																				// do
-																				// tipo
-																				// MovimentoConta
-																				// com
-																				// os
-																				// atributos
-																				// recebidos
+		MovimentoContaCredito mcc = new MovimentoContaCredito(contaO, contaO, valor, nomeFonte, data); // Inicializa
+		// um
+		// novo
+		// atributo
+		// do
+		// tipo
+		// MovimentoConta
+		// com
+		// os
+		// atributos
+		// recebidos
 		RepositorioMovimentoConta rmc = new RepositorioMovimentoConta(); // Inicializa
 																			// um
 																			// novo
@@ -57,8 +58,8 @@ public class TesteRepositorioMovimentoConta {
 																			// tipo
 																			// RepositorioMovimentoConta
 
-		rmc.incluir(mc); // Inclui ao repositorio o movimentoConta
-		System.out.println("Movimento existe: \n" + rmc.buscar(mc.getChave())); // Imprimi
+		rmc.incluir(mcc); // Inclui ao repositorio o movimentoConta
+		System.out.println("Movimento existe: \n" + rmc.buscar(mcc.getChave())); // Imprimi
 		// se o
 		// movimento
 		// ja
@@ -66,7 +67,6 @@ public class TesteRepositorioMovimentoConta {
 		// adicionado
 		// ao
 		// repositorio
-		rmc.incluir(mc); // Inclui ao repositorio o movimentoConta
 		rmc.buscarTodos(); // Imprimi as informacoes de tudo existente no array
 	}
 

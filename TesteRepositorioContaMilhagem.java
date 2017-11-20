@@ -1,7 +1,7 @@
-//OK
 package com.acme.testes.conta;
 
 import com.acme.ado.conta.RepositorioContaMilhagem;
+
 import com.acme.rn.cliente.Cliente;
 import com.acme.rn.cliente.Cpf;
 import com.acme.rn.conta.ContaMilhagem;
@@ -9,7 +9,7 @@ import com.acme.rn.conta.IdentificadorConta;
 
 public class TesteRepositorioContaMilhagem {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		String cpff = "04623671186"; // Inicializa o atributo do tipo cadeia de
 										// caracteres
 		Cpf cpf = new Cpf(cpff); // Inicializa o atributo do tipo Cpf com a
@@ -56,8 +56,7 @@ public class TesteRepositorioContaMilhagem {
 							// repositorio
 
 		rcm.incluir(cm); // Inclui ao repositorio a contaMilhagem
-		rcm.incluir(cm); // Tenta incluir novamente a contaMilhagem ao
-							// repositorio
+
 		id.setIdentificadorConta(9999); // Altera o indetificadorConta
 		ContaMilhagem cmNovo = new ContaMilhagem(id, c); // Inicializa o
 															// atributo do tipo

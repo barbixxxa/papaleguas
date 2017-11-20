@@ -1,16 +1,16 @@
-//OK
 package com.acme.testes.cliente;
 
+import com.acme.excecoes.ExcecaoValorInvalido;
 import com.acme.rn.cliente.Cliente;
 import com.acme.rn.cliente.Cpf;
 
 public class TesteCliente {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ExcecaoValorInvalido {
 		String cpf = "11144477735"; // Declaracao da cadeia de caracteres
 		Cpf cpfDois, cpfUm; // Declarao dos atributos
 		cpfUm = new Cpf(cpf); // Cria um novo atributo do tipo cpf
-		Cliente c = new Cliente(cpfUm, "Son \"Kakaroto\" Goku", 789, 25, 0); // Cria
+		Cliente c = new Cliente(cpfUm, "Son \"Kakaroto\" Goku", 789, 25, 1); // Cria
 																				// um
 																				// novo
 																				// atributo
@@ -27,7 +27,7 @@ public class TesteCliente {
 		c.setNome("Marta Vieira da Silva"); // Altera o nome do cliente
 		c.setRenda(c.getRenda() / 2); // Altera a renda do cliente
 		c.setIdade(29); // Altera a idade do cliente
-		c.setSexo(1); // Altera o sexo do cliente
+		c.setSexo(2); // Altera o sexo do cliente
 
 		System.out.println("\nCpf: " + cpfDois.getCpf() + // Imprimi os dados do
 															// cliente

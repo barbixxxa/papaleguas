@@ -2,57 +2,104 @@ package com.acme.rn.conta;
 
 import java.util.Date;
 
-import com.acme.rn.classesGerais.Identificavel;
+import com.acme.excecoes.ExcecaoValorInvalido;
+import com.acme.rn.classesGerais.Registro;
 
-public class MovimentoConta extends Identificavel {
+public abstract class MovimentoConta extends Registro {
 
 	private ContaMilhagem contaOrigem; // Declaracao dos atributos
-
+	private ContaMilhagem contaDestino;
 	private double valor;
 	private String nomeFonte;
 	private Date data;
 
-	public MovimentoConta(ContaMilhagem contaOrigem, double valor, String nomeFonte, Date data) {// Construtor
-																									// para
-																									// inicializar
-																									// os
-																									// atributos
+	public MovimentoConta(ContaMilhagem contaOrigem, ContaMilhagem contaDestino, double valor, String nomeFonte,
+			Date data) throws ExcecaoValorInvalido {// Construtor
+		// para
+		// inicializar
+		// os
+		// atributos
 
-		this.setcontaOrigem(contaOrigem);
+		this.setContaOrigem(contaOrigem);
+		this.setContaDestino(contaDestino);
 		this.setValor(valor);
 		this.setNomeFonte(nomeFonte);
 		this.setData(data);
+		this.validar();
 	}
 
-	public void setData(Date data) {// Metodo para atribuir a data
+	public void setData(Date data) throws ExcecaoValorInvalido {// Metodo para
+																// atribuir a
+																// data
 		if (data != null) {
 			this.data = data;
+		} else {
+			throw new ExcecaoValorInvalido("erro.MovimentoConta.dataInvalida");
 		}
+
 	}
 
-	public void setValor(double valor) {// Metodo para atribuir o valor da
-										// transacao
-		if (valor >= 0) {
+	public void setValor(double valor) throws ExcecaoValorInvalido {// Metodo
+																	// para
+																	// atribuir
+																	// o valor
+																	// da
+		// transacao
+		if (valor > 0) {
 			this.valor = valor;
+		} else {
+			throw new ExcecaoValorInvalido("erro.MovimentoConta.valorInvalido");
 		}
+
 	}
 
-	public void setNomeFonte(String nomeFonte) {// Metodo para atribuir o nome
-												// da fonte
+	public void setNomeFonte(String nomeFonte) throws ExcecaoValorInvalido {// Metodo
+																			// para
+																			// atribuir
+																			// o
+																			// nome
+		// da fonte
 		if (nomeFonte != null) {
 			this.nomeFonte = nomeFonte;
+		} else {
+			throw new ExcecaoValorInvalido("erro.MovimentoConta.nomeFonteInvalido");
 		}
+
 	}
 
-	public void setcontaOrigem(ContaMilhagem cm) {// Metodo para atribuir uma
-													// conta
-		if (cm != null) {
-			this.contaOrigem = cm;
+	public void setContaOrigem(ContaMilhagem cmO) throws ExcecaoValorInvalido {// Metodo
+																				// para
+																				// atribuir
+																				// uma
+																				// conta
+		if (cmO != null) {
+			this.contaOrigem = cmO;
+
+		} else {
+			throw new ExcecaoValorInvalido("erro.MovimentoConta.contaOrigemInvalida");
 		}
+
 	}
 
-	public ContaMilhagem getcontaOrigem() { // Metodo para receber a conta
+	public void setContaDestino(ContaMilhagem cmD) throws ExcecaoValorInvalido {// Metodo
+																				// para
+																				// atribuir
+																				// uma
+		// conta
+		if (cmD != null) {
+			this.contaDestino = cmD;
+		}else{
+		throw new ExcecaoValorInvalido("erro.MovimentoConta.contaDestinoInvalida");
+		}
+
+	}
+
+	public ContaMilhagem getContaOrigem() { // Metodo para receber a conta
 		return contaOrigem;
+	}
+
+	public ContaMilhagem getContaDestino() { // Metodo para receber a conta
+		return contaDestino;
 	}
 
 	public double getValor() { // Metodo para receber o valor
@@ -104,9 +151,33 @@ public class MovimentoConta extends Identificavel {
 				+ data.getYear() + data.getHours() + data.getMinutes();
 	}
 
+	public void validar() throws ExcecaoValorInvalido {
+		if (this.contaOrigem != null) {
+			if (this.valor > 0) {
+				if (this.contaDestino != null) {
+					if (this.nomeFonte == null || ((this.nomeFonte.length()) < 100)) {
+						if (this.data != null) {
+
+						} else {
+							throw new ExcecaoValorInvalido("erro.MovimentoConta.dataInvalida");
+						}
+					} else {
+						throw new ExcecaoValorInvalido("erro.MovimentoConta.nomeFonteInvalido");
+					}
+				} else {
+					throw new ExcecaoValorInvalido("erro.MovimentoConta.contaDestinoInvalida");
+				}
+			} else {
+				throw new ExcecaoValorInvalido("erro.MovimentoConta.valorInvalido");
+			}
+		} else {
+			throw new ExcecaoValorInvalido("erro.MovimentoConta.contaOrigemInvalida");
+		}
+	}
+
 	public String toString() { // Metodo que altera o tipo original para o tipo
 								// cadeia de caracteres
-		return this.getcontaOrigem().toString() + "Valor: " + this.getValor() + "\nConta de Destino: \n"
+		return this.getContaOrigem().toString() + "Valor: " + this.getValor() + "\nConta de Destino: \n"
 				+ "Nome da Fonte: " + this.getNomeFonte() + "\nData: " + this.getData() + "\n";
 	}
 

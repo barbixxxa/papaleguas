@@ -1,6 +1,4 @@
-/*
- * Excluir
-
+//OK 19/11 09:50
 package com.acme.testes.conta;
 
 import java.util.Date;
@@ -13,10 +11,9 @@ import com.acme.rn.conta.ContaMilhagem;
 import com.acme.rn.conta.IdentificadorConta;
 import com.acme.rn.conta.MovimentoContaCredito;
 
-public class TesteMovimentoConta {
+public class TesteMovimentoContaCredito {
 
 	public static void main(String[] args) throws ExcecaoValorInvalido {
-
 		int valor; // Declaracao de atributos do tipo inteiro
 		String nomeFonte; // Declaracao do atributo do tipo cadeia de caracteres
 		Date data = new Date(); // Inicializacao do atributo do tipo data
@@ -45,25 +42,28 @@ public class TesteMovimentoConta {
 														// tela
 		nomeFonte = sc.next(); // Atribui ao atributo a proxima cadeia de
 								// caracteres digitada
+		cmO.creditar(valor); //Credita o valor a conta
 
 		MovimentoContaCredito mcc = new MovimentoContaCredito(cmO, cmO, valor, nomeFonte, data); // Inicializacao
-																				// do
-																				// atributo
-																				// do
-																				// tipo
-																				// MovimentoConta
+		// do
+		// atributo
+		// do
+		// tipo
+		// MovimentoConta
+
 		System.out.println(mcc.toString() + "\n" + mcc.getNomeExtrato()); // Imprimi
-																		// na
-																		// tela
-																		// as
-																		// informacoes
-																		// do
-																		// movimentoConta
+																			// na
+																			// tela
+																			// as
+																			// informacoes
+																			// do
+																			// movimentoConta
 		sc.close(); // Fecha o scanner
 
-		System.out.println("\nChave:" + mcc.getChave()); // Retorna o valor da chave do
-											// movimento conta
+		System.out.println("\nChave:" + mcc.getChave()); // Retorna o valor da
+															// chave do
+		// movimento conta
+
 	}
 
 }
-*/

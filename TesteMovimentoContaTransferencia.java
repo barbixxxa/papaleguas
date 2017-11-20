@@ -1,6 +1,4 @@
-/*
- * Excluir
-
+//OK 19/11 09:50
 package com.acme.testes.conta;
 
 import java.util.Date;
@@ -11,12 +9,11 @@ import com.acme.rn.cliente.Cliente;
 import com.acme.rn.cliente.Cpf;
 import com.acme.rn.conta.ContaMilhagem;
 import com.acme.rn.conta.IdentificadorConta;
-import com.acme.rn.conta.MovimentoContaCredito;
+import com.acme.rn.conta.MovimentoContaTransferencia;
 
-public class TesteMovimentoConta {
+public class TesteMovimentoContaTransferencia {
 
-	public static void main(String[] args) throws ExcecaoValorInvalido {
-
+	public static void main(String[] args) throws Exception {
 		int valor; // Declaracao de atributos do tipo inteiro
 		String nomeFonte; // Declaracao do atributo do tipo cadeia de caracteres
 		Date data = new Date(); // Inicializacao do atributo do tipo data
@@ -36,6 +33,9 @@ public class TesteMovimentoConta {
 		ContaMilhagem cmO = new ContaMilhagem(idc, c); // Inicializacao do
 														// atributo do tipo
 														// ContaMilhagem
+		ContaMilhagem cmD = new ContaMilhagem(idc, c); // Inicializacao do
+														// atributo do tipo
+														// ContaMilhagem
 
 		Scanner sc = new Scanner(System.in); // Inicializacao do scanner
 
@@ -45,25 +45,30 @@ public class TesteMovimentoConta {
 														// tela
 		nomeFonte = sc.next(); // Atribui ao atributo a proxima cadeia de
 								// caracteres digitada
+		cmO.creditar(valor + 250); //Credita o valor a conta
+		cmO.transferir(valor, cmD); //Transfere o valor da conta Origem a conta Destino
 
-		MovimentoContaCredito mcc = new MovimentoContaCredito(cmO, cmO, valor, nomeFonte, data); // Inicializacao
-																				// do
-																				// atributo
-																				// do
-																				// tipo
-																				// MovimentoConta
-		System.out.println(mcc.toString() + "\n" + mcc.getNomeExtrato()); // Imprimi
-																		// na
-																		// tela
-																		// as
-																		// informacoes
-																		// do
-																		// movimentoConta
+		MovimentoContaTransferencia mct = new MovimentoContaTransferencia(cmO, cmD, valor, nomeFonte, data); // Inicializacao
+		// do
+		// atributo
+		// do
+		// tipo
+		// MovimentoConta
+
+		mct.setContaDestino(cmD); // Metodo para atribuir conta Destino
+		mct.getContaDestino(); // Metodo para receber conta destino
+		System.out.println(mct.toString() + "\n" + mct.getNomeExtrato()); // Imprimi
+																			// na
+																			// tela
+																			// as
+																			// informacoes
+																			// do
+																			// movimentoConta
 		sc.close(); // Fecha o scanner
 
-		System.out.println("\nChave:" + mcc.getChave()); // Retorna o valor da chave do
-											// movimento conta
+		System.out.println("\nChave:" + mct.getChave()); // Retorna o valor da
+															// chave do
+		// movimento conta
 	}
 
 }
-*/

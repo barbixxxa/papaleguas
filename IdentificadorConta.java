@@ -1,20 +1,30 @@
+//OK 19/11 17:47
 package com.acme.rn.conta;
+
+import com.acme.excecoes.ExcecaoValorInvalido;
 
 public class IdentificadorConta {
 
 	private long numero; // Declaracao dos atributos
 	private int digitoVerificador;
 
-	public IdentificadorConta(long numero) { // Construtor para inicializar o
-												// atributo numero
+	public IdentificadorConta(long numero) throws ExcecaoValorInvalido { // Construtor
+																			// para
+																			// inicializar
+																			// o
+		// atributo numero
 		this.setIdentificadorConta(numero); // Atribui ao atributo o valor long
 											// recebido
 	}
 
-	public void setIdentificadorConta(long numero) { // Metodo para atribuir
-														// valor ao atributo
-		if(numero != 0){
+	public void setIdentificadorConta(long numero) throws ExcecaoValorInvalido { // Metodo
+																					// para
+																					// atribuir
+		// valor ao atributo
+		if (numero != 0) {
 			this.numero = numero; // Atribui ao atributo o valor long recebido
+		} else {
+			throw new ExcecaoValorInvalido("erro.IdentificadorConta.numeroInvalido");
 		}
 	}
 

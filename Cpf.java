@@ -1,4 +1,7 @@
+//OK 19/11 17:41
 package com.acme.rn.cliente;
+
+import com.acme.excecoes.ExcecaoValorInvalido;
 
 public class Cpf {
 
@@ -72,16 +75,16 @@ public class Cpf {
 		return verificacao; // Retorna o valor logico da verificacao
 	}
 
-	public void setCpf(String cpf) { // Metodo para receber o cpf
+	public void setCpf(String cpf) throws ExcecaoValorInvalido{ // Metodo para receber o cpf
 		if (cpf.length() > 10 && cpf.length() < 12 && this.calcularDigitoVerificador(cpf) == true) // Verificacao
 																									// do
 																									// cpf
 			this.cpf = cpf;
 		else
-			System.out.println("Cpf nao e valido.");
+			throw new ExcecaoValorInvalido("erro.Cpf.cpfInvalido");
 	}
 
-	public Cpf(String cpf) { // Construtor que atribui o valor recebido ao
+	public Cpf(String cpf) throws ExcecaoValorInvalido { // Construtor que atribui o valor recebido ao
 								// atributo cpf
 		this.setCpf(cpf);
 	}

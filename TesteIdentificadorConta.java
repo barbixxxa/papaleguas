@@ -1,12 +1,13 @@
-//OK
 package com.acme.testes.conta;
 
 import java.util.Scanner;
+
+import com.acme.excecoes.ExcecaoValorInvalido;
 import com.acme.rn.conta.IdentificadorConta;
 
 public class TesteIdentificadorConta {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ExcecaoValorInvalido {
 
 		IdentificadorConta id; // Declaracao dos atributos
 		int dig;

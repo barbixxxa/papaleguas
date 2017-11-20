@@ -1,4 +1,3 @@
-//OK
 package com.acme.testes.conta;
 
 import com.acme.rn.cliente.Cliente;
@@ -8,7 +7,7 @@ import com.acme.rn.conta.ControladorContaMilhagem;
 import com.acme.rn.conta.IdentificadorConta;
 
 public class TesteControladorContaMilhagem {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		String cpf = "11144477735"; // Declaracao da cadeia de caracteres
 		Cpf cpff = new Cpf(cpf); // Cria um novo atributo do tipo cpf
 
@@ -23,16 +22,13 @@ public class TesteControladorContaMilhagem {
 																			// como
 																			// id
 
-		Cliente cliente = new Cliente(cpff, "Eu", 9999, 9, 1);// Inicializa um
+		Cliente cliente = new Cliente(cpff, "Eu", 9999, 199, 1);// Inicializa um
 																// novo cliente
 
 		ControladorCliente.incluir(cliente);// Inclui o cliente ao repositorio
 											// pelo controlador
 		// cliente
 
-		ControladorContaMilhagem.inserir(cpff);// Inseri o cpf a uma conta ao
-												// repositorio pelo
-		// controlador conta milhagem
 		ControladorContaMilhagem.creditar(id, 33310);// Credita pelo controlador
 														// conta milhagem
 		System.out.println(ControladorContaMilhagem.buscar(id));// Imprimi a
